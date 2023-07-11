@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Sitemap:http://einsteinacademy.us/sitemap.xml
+Sitemap:http://einsteinacademy.us/sitemap_1.xml
