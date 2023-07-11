@@ -9,27 +9,17 @@ if ( $_SERVER[ 'SERVER_PORT' ] !== '443' && $_SERVER[ 'SERVER_PORT' ] !== '80' )
     exit();
 }
 
-if ( isset( $_SESSION[ 'rid' ] ) ) {
+if ( isset( $_SESSION[ 'uid' ] ) ) {
     switch ( $_GET[ 'page' ] ) {
 
         case 'home':
-            $page = 'pages/home.php';
-            $title .= '';
-            break;
-
-         case 'accreditation':
-            $page = 'pages/accreditation.php';
-            $title .= '';
-            break;
-          
-        case 'our-mission':
-            $page = 'pages/our-mission.php';
-            $title .= '';
+            $page = 'admin/home.php';
+            $title .= 'Administrator';
             break;
 
         default:
             $page = 'pages/home.php';
-            $title .= '';
+            $title .= 'Administrator';
             break;
     }
 } 
@@ -38,27 +28,30 @@ else
     
     switch ( isset($_GET[ 'page' ] ) )
     {
-
-         
         case 'home':
             $page = 'pages/home.php';
-            $title .= '';
+            $title .= 'Home';
+            break;
+     
+        case 'contact':
+            $page = 'pages/contact.php';
+            $title .= 'contact';
             break;
          
         case 'accreditation':
             $page = 'pages/accreditation.php';
-            $title .= '';
+            $title .= 'Accreditation';
             break;
           
         case 'our-mission':
             $page = 'pages/our-mission.php';
-            $title .= '';
+            $title .= 'Our Mission';
             break;
             
 
         default:
             $page = 'pages/home.php';
-            $title .= '';
+            $title .= 'Home';
             break;
     }
 
@@ -138,7 +131,7 @@ include 'head.php';
                                 <a href="<?php echo root();?>/" aria-current="page">Home</a>
                             </li>
                             <li id="menu-item-1022" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1022">
-                                <a href="http://einsteinacademy.us/#">About Us</a>
+                                <a href="<?php echo root();?>#">About Us</a>
                                 <ul class="sub-menu">
                                     <li id="menu-item-348" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-348"><a href="<?php echo root();?>accreditation/">Accreditation</a></li>
                                     <li id="menu-item-435" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-435"><a href="<?php echo root();?>about-us/our-mission/">Our Mission</a></li>

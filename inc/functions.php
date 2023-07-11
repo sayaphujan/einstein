@@ -121,53 +121,6 @@ function month( $num ) {
     return $month[ $num ];
 }
 
-function sendHTML($email,$subject,$message)
-{
-    //if(DEVELOPMENT)
-      //  return true;
-    
-	$dom = root('dom');
-	$headers  = "From: <info@peregrinemfginc.com>\r\n"; 
-	$headers .= "To: <{$email}>\r\n";
-	$headers .= "Subject: {$subject}\r\n";
-	$headers .= "Date: ".date("r")."\r\n";
-	$headers .= "Organization: Organization\r\n";
-	$headers .= "User-Agent: NDX Mail/1.0\r\n";
-	$headers .= "MIME-Version: 1.0\r\n";
-	$headers .= "Reply-To: info@peregrinemfginc.com\r\n";
-	$headers .= "Content-Type: text/html; charset=iso-8859-1\r\n";
-	$headers .= "Content-Transfer-Encoding: 7bit\r\n";
-	$headers .= "Content-Disposition: inline\r\n";
-	$headers .= "Message-Id: <".date("mdY").time().".email@peregrine.ndevix.com>";
-	
-	$socket = pfsockopen('mail.ndevix.com', 25, $errno, $errstr);
-	if ($socket){
-		fputs($socket, "HELO s106.ndevix.com\r\n");
-		fgets($socket, 256);
-		fputs($socket, "AUTH LOGIN\r\n");
-		fgets($socket, 256);
-		fputs($socket, base64_encode("peregrinecontainers@ndevix.com")."\r\n");
-		fgets($socket, 256);
-		fputs($socket, base64_encode("i2pptpxzzi")."\r\n");
-		fgets($socket, 256);
-		fputs($socket, "MAIL FROM:<info@peregrinemfginc.com>\r\n");
-		fgets($socket, 256);
-		fputs($socket, "RCPT TO:<{$email}>\r\n");
-		fgets($socket, 256);
-		fputs($socket, "DATA\r\n");
-		fgets($socket, 256);
-		fputs($socket, "{$headers}\n\n{$message}\r\n");
-		fputs($socket, ".\r\n");
-		fgets($socket, 256);
-		fputs($socket, "QUIT\r\n");
-		fgets($socket, 256);
-		fclose($socket);
-		//echo 'success';
-	} else {
-		echo 'Our servers are temporarily offline. Please try back in a few minutes';
-	}
-}
-
 // Function to convert NTP string to an array
 function to_array($string)
 {

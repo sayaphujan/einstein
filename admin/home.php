@@ -135,6 +135,7 @@ p.et_pb_contact_field {
 }
 </style>
 
+<?php if(isset($_SESSION['uid'])) { ?>
 <div class="et_pb_section et_pb_section_0 et_pb_with_background et_pb_fullwidth_section et_section_regular section_has_divider et_pb_top_divider">
 				<div class="et_pb_top_inside_divider" style=""></div>
 				
@@ -148,7 +149,7 @@ p.et_pb_contact_field {
 					<div class="header-content">
 						
 						<h2 class="et_pb_module_header">Welcome,</h2>
-						<span class="et_pb_fullwidth_header_subhead"><?=$_SESSION['cname'];?></span>
+						<span class="et_pb_fullwidth_header_subhead"><?php echo $_SESSION['cname'];?></span>
 						<div class="et_pb_header_content_wrapper"></div>
 						
 					</div>
@@ -161,4 +162,4 @@ p.et_pb_contact_field {
 			
 			
 			</div>
-			
+<?php } ?>
